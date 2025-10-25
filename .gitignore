@@ -6,9 +6,22 @@
 # PHP session files
 sessions/
 
-# Compiled files
-*.pyc
-__pycache__/
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment files
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
 
 # IDE files
 .vscode/
@@ -16,36 +29,6 @@ __pycache__/
 *.swp
 *.swo
 *~
-
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
-*.log
-error_log
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Node modules (if any)
-node_modules/
-
-# Environment files
-.env
-.env.local
-
-# Build files
-build/
-dist/
-
-# Archives
-*.rar
-*.zip
-*.tar.gz
 
 # Backup files
 *.bak
