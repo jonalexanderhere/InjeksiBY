@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Phoenix CTF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Phoenix CTF - Profile 🔥</h1>
+            <div class="nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="message"></div>
+
+            <div class="profile-box">
+                <h2>Your Profile</h2>
+                <div class="profile-info">
+                    <div class="profile-item">
+                        <strong>Username:</strong>
+                        <span id="username"></span>
+                    </div>
+                    <div class="profile-item">
+                        <strong>Email:</strong>
+                        <span id="email"></span>
+                    </div>
+                    <div class="profile-item">
+                        <strong>Role:</strong>
+                        <span id="role"></span>
+                    </div>
+                    <div class="profile-item">
+                        <strong>Account Created:</strong>
+                        <span id="created"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Phoenix CTF. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Check if user is logged in
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('username').textContent = currentUser.username;
+            document.getElementById('email').textContent = currentUser.email || 'N/A';
+            document.getElementById('role').textContent = currentUser.isAdmin ? '👑 Administrator' : '👤 Regular User';
+            document.getElementById('created').textContent = currentUser.created;
+        }
+    </script>
+</body>
+</html>

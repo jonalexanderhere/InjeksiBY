@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Phoenix CTF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Phoenix CTF - Admin Dashboard 🔥</h1>
+            <div class="nav">
+                <a href="profile.html">Profile</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="message"></div>
+
+            <div class="welcome-box">
+                <h2>Welcome, Administrator <span id="username"></span>!</h2>
+                <p>You have admin privileges. Here is your flag:</p>
+            </div>
+
+            <div class="flag-box">
+                <h2>🎉 Congratulations! 🎉</h2>
+                <div class="flag">
+                    <h3>FLAG:</h3>
+                    <p class="flag-text">PHXCTF{L00mer_D1mulut}</p>
+                </div>
+                <p class="flag-description">
+                    You have successfully accessed the admin dashboard and found the hidden flag!
+                </p>
+            </div>
+
+            <div class="admin-panel">
+                <h3>📊 User Management</h3>
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stats-box">
+                <h3>📈 Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4 id="totalUsers">0</h4>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 id="totalAdmins">0</h4>
+                        <p>Admin Users</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4 id="totalRegular">0</h4>
+                        <p>Regular Users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Phoenix CTF. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Check if user is logged in and is admin
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else if (!currentUser.isAdmin) {
+            showMessage('Access denied! Admin privileges required.', 'error');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 2000);
+        } else {
+            document.getElementById('username').textContent = currentUser.username;
+            loadUsersList();
+        }
+
+        function loadUsersList() {
+            const users = getAllUsers();
+            const tbody = document.getElementById('usersBody');
+            tbody.innerHTML = '';
+
+            let totalAdmins = 0;
+            let totalRegular = 0;
+
+            users.forEach((user, index) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email || 'N/A'}</td>
+                    <td>${user.isAdmin ? '👑 Admin' : '👤 User'}</td>
+                    <td>${user.created}</td>
+                `;
+
+                if (user.isAdmin) {
+                    totalAdmins++;
+                } else {
+                    totalRegular++;
+                }
+            });
+
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalAdmins').textContent = totalAdmins;
+            document.getElementById('totalRegular').textContent = totalRegular;
+        }
+    </script>
+</body>
+</html>

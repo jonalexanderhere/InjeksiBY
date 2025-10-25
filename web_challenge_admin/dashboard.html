@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Phoenix CTF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Phoenix CTF - User Dashboard 🔥</h1>
+            <div class="nav">
+                <a href="profile.html">Profile</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="message"></div>
+
+            <div class="welcome-box">
+                <h2>Welcome, <span id="username"></span>!</h2>
+                <p>You have successfully logged in to your account.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Your Account Type</h3>
+                <p>👤 <strong>Regular User</strong></p>
+                <p>You do not have admin privileges to view the flag.</p>
+            </div>
+
+            <div class="hint-box">
+                <h3>Challenge Status</h3>
+                <p>❌ Access Denied: You need admin privileges to view the flag.</p>
+                <p>💡 Try to find a way to access the admin dashboard...</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Phoenix CTF. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Check if user is logged in
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('username').textContent = currentUser.username;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1667 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wreck IT 6.0 Junior Qualifier</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/themes/core/static/img/favicon.ico?d=3c1a5614" type="image/x-icon">
+
+  
+
+  
+    <link rel="stylesheet" href="/themes/core/static/assets/main.e9ec7884.css">
+  
+
+  
+
+  <script  src="/themes/core/static/assets/color_mode_switcher.52334129.js"></script>
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "",
+          'csrfNonce': "d8bbd4c33790b0460e8613b44dd75ccdba32654fe9a27b1bc57450e1f5f0169f",
+          'userMode': "teams",
+          'userId': 52,
+          'userName': "jonobaek",
+          'userEmail': "fahriazhar148@gmail.com",
+          'userVerified': false,
+          'teamId': 92,
+          'teamName': "Phoenixsec",
+          'start': 1759543200,
+          'end': 1759579200,
+          'themeSettings': null,
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  <link rel="stylesheet" href="theme_blue.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a href="/" class="navbar-brand">
+      CTFd
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars" aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="base-navbars">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/users">
+            Users
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/teams">
+            Teams
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/scoreboard">
+            Scoreboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/challenges">
+            Challenges
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/notifications">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notifications">
+              <i class="fas fa-bell d-none d-md-inline d-lg-none"></i>
+            </span>
+            <span class="d-sm-inline d-md-none d-lg-inline">
+                <i class="fas fa-bell pe-1"></i>
+                <span x-data x-show="$store.unread_count > 0" x-text="$store.unread_count" class="badge rounded-pill bg-danger badge-notification"></span>
+                Notifications
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Team">
+              <i class="fas fa-users d-none d-md-inline d-lg-none"></i>
+            </span>
+            <span class="d-sm-inline d-md-none d-lg-inline">
+              <i class="fas fa-users pe-1"></i>
+              Team
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
+              <i class="fas fa-user-circle d-none d-md-inline d-lg-none"></i>
+            </span>
+            <span class="d-sm-inline d-md-none d-lg-inline">
+              <i class="fas fa-user-circle pe-1"></i>
+              Profile
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/settings">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Settings">
+              <i class="fas fa-cogs d-none d-md-inline d-lg-none"></i>
+            </span>
+            <span class="d-sm-inline d-md-none d-lg-inline">
+              <i class="fas fa-cogs pe-1"></i>
+              Settings
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Logout">
+              <i class="fas fa-sign-out-alt d-none d-md-inline d-lg-none"></i>
+            </span>
+            <span class="d-sm-inline d-md-none d-lg-inline">
+              <i class="fas fa-sign-out-alt pe-1"></i><span class="d-lg-none">
+                Logout
+              </span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language d-none d-md-inline"></i>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-language pe-1"></i>
+              Change language
+            </span>
+          </button>
+          <form x-data="LanguageForm">
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                  <span class="dropdown-item bg-primary text-white" @click="set" value="en">
+                    English
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="de">
+                    Deutsch
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pl">
+                    Polski
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="es">
+                    Español
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ar">
+                    اَلْعَرَبِيَّةُ
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_CN">
+                    简体中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_TW">
+                    繁體中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fr">
+                    Français
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ko">
+                    한국어
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ru">
+                    русский язык
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pt_BR">
+                    Português do Brasil
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sk">
+                    Slovenský jazyk
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ja">
+                    日本語
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="it">
+                    Italiano
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="vi">
+                    tiếng Việt
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ca">
+                    Català
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="el">
+                    Ελληνικά
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fi">
+                    Suomi
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ro">
+                    Română
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sl">
+                    Slovenščina
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sv">
+                    Svenska
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="he">
+                    עברית
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="uz">
+                    oʻzbekcha
+                  </span>
+              </li>
+            </ul>
+          </form>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link theme-switch" type="button">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle theme">
+              <i class="fas fa-sun d-none d-md-inline"></i>
+            </span>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-sun pe-1"></i>
+              Toggle theme
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main role="main">
+  
+  <div class="container">
+    <!-- WRECK-IT styled landing (scoped, safe for CTFd) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Tailwind CDN with a safe prefix to avoid Bootstrap collisions -->
+<script>
+  window.tailwind = window.tailwind || {};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    prefix: 'tw-',
+    theme: {
+      extend: {
+        colors: {
+          onyx: '#0a0a0f',
+          gold: '#3b82f6',
+          coal: '#0d0f14'
+        },
+        fontFamily: {
+          display: ['Poppins', 'ui-sans-serif', 'system-ui'],
+          mono: ['JetBrains Mono','ui-monospace']
+        },
+        boxShadow: {
+          glow: '0 0 20px rgba(59,130,246,.35)'
+        },
+        keyframes: {
+          popUp: { '0%': { transform: 'scale(.75)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } }
+        },
+        animation: { popUp: 'popUp .6s ease-out both' }
+      }
+    },
+    corePlugins: { preflight: false } /* don't reset Bootstrap styles */
+  }
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    
+    /*
+     * CTFd Lingonberry theme — WRECK-IT Onyx/Blue/Coal Ver. By jono alexander
+     * Palette synced with landing:
+     *  - onyx  : #0a0a0f
+     *  - coal  : #0d0f14
+     *  - blue  : #3b82f6
+     */
+    
+    :root {
+      /* Core palette (mapped to onyx/coal/blue) */
+      --bs-dark: #0a0a0f;              /* onyx */
+      --bs-dark-rgb: 10, 10, 15;
+      --bs-body-bg: #0a0a0f;           /* onyx */
+    
+      /* Components */
+      --primary-font: "Inter", system-ui, sans-serif;
+      --yum: rgba(17, 24, 39, .72);    /* panel (tw zinc-900/80) */
+    
+      /* Neon accents -> blue-centric */
+      --neon-blue: #3b82f6;            /* primary accent (blue) */
+      --neon-blue-soft: #93c5fd;       /* softer glow (blue-300) */
+      --neon-cyan: #3b82f6;            /* alias to blue for hover accents */
+    
+      /* Back-compat for old variable names */
+      --neon-green: var(--neon-blue);
+      --neon-magenta: var(--neon-blue);
+      --neon-amber: var(--neon-blue);
+      --neon-gold: var(--neon-blue);
+      --neon-blue-legacy: var(--neon-blue);
+    
+      /* Useful alphas for borders/glows (blue-tinted) */
+      --blue-08: rgba(59, 130, 246, .08);
+      --blue-12: rgba(59, 130, 246, .12);
+      --blue-20: rgba(59, 130, 246, .20);
+      --blue-33: rgba(59, 130, 246, .33);
+      --blue-55: rgba(59, 130, 246, .55);
+    
+      --gold-20: rgba(59, 130, 246, .20);
+      --gold-33: rgba(59, 130, 246, .33);
+      --gold-55: rgba(59, 130, 246, .55);
+    
+      /* Rings */
+      --ring-soft: 0 0 8px;
+      --ring-med: 0 0 14px;
+      --ring-hard: 0 0 22px;
+    
+      /* Bootstrap link/code primaries remapped */
+      --bs-link-color: var(--neon-blue);
+      --bs-link-hover-color: #60a5fa;  /* blue-400 */
+      --bs-code-color: var(--neon-blue);
+      --bs-primary-rgb: 59, 130, 246;  /* blue */
+    }
+    
+    /* force dark */
+    :root, [data-bs-theme=light] {
+      color-scheme: dark;
+      --bs-body-color: #f5f5f4; /* warm near-white (stone-100) */
+      --bs-emphasis-color: #ffffff;
+      --bs-emphasis-color-rgb: 255, 255, 255;
+      --bs-secondary-color: rgba(245, 245, 244, .78);
+      --bs-secondary-color-rgb: 245, 245, 244;
+      --bs-secondary-bg: #111316;       /* near coal */
+      --bs-secondary-bg-rgb: 17, 19, 22;
+      --bs-tertiary-color: rgba(245, 245, 244, .6);
+      --bs-tertiary-bg: #0f1115;        /* deeper coal */
+    
+      --bs-highlight-color: #0a0a0f;
+      --bs-highlight-bg: #93c5fd;
+      --bs-border-color: #27272a;       /* zinc-800 */
+      --bs-border-color-translucent: var(--blue-20);
+      --bs-form-valid-color: var(--neon-blue);
+      --bs-form-valid-border-color: var(--neon-blue);
+      --bs-form-invalid-color: #ff6b88;
+      --bs-form-invalid-border-color: #ff6b88;
+    }
+    
+    .table {
+      --bs-table-bg: #0000;
+      --bs-table-border-color: #0000;
+    }
+    
+    .nav-pills {
+      --bs-nav-pills-link-active-bg: var(--neon-blue);
+    }
+    
+    ::selection {
+      background: var(--neon-blue);
+      color: #0a0a0f;
+    }
+    
+    html, body, .container { font-family: var(--primary-font); }
+    
+    @media (width > 991px) { body>div.modal-backdrop.fade.show { display: none; } }
+    
+    .table {
+      border-radius: 8px;
+      outline: 1px solid var(--blue-20);
+      margin: 9px 0;
+      box-shadow: var(--ring-soft) var(--neon-blue);
+    }
+    
+    body:has(>nav:hover) .bs-tooltip-auto { display: none; }
+    
+    @media (width < 576px) {
+      .navbar-toggler { width: 100%; padding: 0; margin: 0 8px 8px; }
+      .navbar-brand { margin: auto; }
+    }
+    
+    /* warm card for scoreboard graph */
+    #score-graph {
+      background: #dbeafe; /* blue-100 */
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 0 24px 0 var(--gold-20), 0 0 48px 0 var(--gold-20);
+      position: static!important;
+      padding-top: 14px;
+    }
+    div[x-data="TeamGraphs"] #score-graph { border-radius: 8px; box-shadow: none; }
+    
+    body>footer { display: none; }
+    
+    /* subtle signature tooltip, blue */
+    body>nav>.container>.navbar-brand:hover {
+      &::before {
+        content: "Powered by CTFd / Wreck IT 6.0 theme by jono alexander ✦";
+        position: absolute; pointer-events: none;
+        translate: -39px -35px;
+        font-size: 16px; border-radius: 12px;
+        color: var(--neon-blue);
+        text-shadow: 0 0 6px var(--neon-blue), 0 0 14px var(--neon-blue);
+        transition: translate 2s cubic-bezier(0,1,0,1);
+        @starting-style { translate: -39px -45px; }
+      }
+    }
+    
+    nav.navbar {
+      user-select: none;
+      --yum: #0f1115;
+      background: var(--yum)!important;
+      width: fit-content; margin: auto;
+      top: unset; bottom: 16px; padding: 0 32px;
+      border-radius: 12px;
+      border: 1px solid var(--blue-20);
+      box-shadow: 0 0 18px var(--gold-20), 0 0 36px var(--gold-20);
+    
+      li.nav-item {
+        &:has(.fa-language) button::after { display: none }
+        &:has(.fa-moon) { display: none; }
+    
+        form[x-data="LanguageForm"] {
+          ul {
+            translate: 0 calc(-100% - 48px);
+            @media (width < 576px) { translate: 0 calc(100% - 88vh); }
+            background: var(--yum);
+            box-shadow: 0 0 18px var(--gold-33);
+            span.dropdown-item.bg-primary { background: var(--neon-blue)!important; }
+          }
+        }
+    
+        @media (min-width: 576px) {
+          &:has(i.fas) {
+            a:has(span:hover)  {
+              span[data-bs-toggle="tooltip"] {
+                &::before {
+                  content: attr(aria-label);
+                  position: absolute; display: flex; align-items: center; pointer-events: none;
+                  height: 32px; padding: 8px; background: #0f1115;
+                  box-shadow: 0 0 16px var(--gold-55);
+                  translate: calc(-50% + 8px) -46px;
+                  border-radius: 12px; color: var(--neon-blue);
+                  transition: translate 2s cubic-bezier(0,1,0,1);
+                  @starting-style { translate: calc(-50% + 8px) -40px; }
+                }
+              }
+            }
+            .d-sm-inline { font-size: 0; i { font-size: 16px; text-shadow: 0 0 8px var(--neon-blue); } }
+          }
+        }
+      }
+    }
+    
+    main {
+      padding-top: 0;
+      font-family: var(--primary-font);
+      background: radial-gradient(1200px 1200px at 10% 10%, #0d0f14 0%, #0a0a0f 55%);
+      & > div.container { container-type: inline-size; }
+      .jumbotron {
+        padding: 0; margin: 32px 0;
+        h1 {
+          font-size: 32px;
+          color: var(--neon-blue);
+          font-weight: 800;
+          text-transform: uppercase;
+          text-shadow: 0 0 8px var(--neon-blue), 0 0 18px var(--neon-blue);
+        }
+      }
+    }
+    
+    main>.jumbotron:has(#team-id),
+    main>.jumbotron:has(>.container>h1):has(>.container>div>h2.text-center>small) {
+      h2 { color: var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+    }
+    
+    main>div.container:not(:has(>div[x-data="ChallengeBoard"])) {
+      &>.row>div {
+        border-radius: 12px; background: var(--yum);
+        border: 1px solid var(--blue-20);
+        box-shadow: 0 0 16px var(--gold-20), 0 0 28px var(--gold-20);
+        padding: 32px;
+      }
+    }
+    
+    main:not(:has(>.jumbotron)) > .container {
+      min-height: 80vh; display: flex; flex-direction: column; justify-content: center;
+      .pt-5.mt-5, h3.text-center { margin-top: 0!important; padding-top: 0!important; }
+    }
+    
+    /* Form controls */
+    input.form-control, select, textarea {
+      &[type="text"], &[type="password"], &[type="url"], &[type="date"], &.form-select, &.form-control:is(textarea) {
+        background: #0f1115;
+        color: #dbeafe; /* blue text */
+        font-family: inherit;
+        border: 1px solid var(--blue-55);
+        box-shadow: inset 0 0 6px var(--gold-33), 0 0 12px var(--blue-20);
+    
+        &.form-select {
+          --bs-form-select-bg-img-light: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+          background-image: var(--bs-form-select-bg-img-light), linear-gradient(to right, #0f1115, #0f1115);
+          background-repeat: no-repeat, repeat;
+          background-position: right, left;
+          background-size: 40px 20px, 100% 100%;
+        }
+        &:focus {
+          box-shadow: 0 0 10px var(--neon-blue), 0 0 22px var(--neon-blue);
+          border-color: var(--neon-blue);
+          outline: none;
+        }
+        &::placeholder { color: #93c5fd; }
+      }
+    }
+    
+    a { color: var(--bs-link-color); text-shadow: 0 0 6px currentColor; }
+    
+    .btn.btn-primary {
+      background: var(--neon-blue);
+      border-color: #ffffff30;
+      box-shadow: 0 0 10px var(--neon-blue), 0 0 22px var(--neon-blue);
+      color: #111111;
+      &:hover {
+        background: #60a5fa;
+        color: #111111;
+        box-shadow: 0 0 10px var(--neon-blue), 0 0 22px var(--neon-blue);
+      }
+      &:active { background: #2563eb; border-color: #ffffff30; }
+    }
+    
+    /* Submit button inside challenge */
+    .submit-row #challenge-submit {
+      border-color: var(--neon-blue);
+      color: #fff;
+      box-shadow: 0 0 10px var(--neon-blue);
+      &:hover {
+        background: var(--neon-blue);
+        color: #111;
+        font-weight: 700;
+      }
+    }
+    
+    #challenge {
+      @media (width > 991px) {
+        & > .notification-row {
+          position: fixed; left: calc(50cqw - 256px); top: calc(100vh - 256px);
+          width: 512px; margin: 0; user-select: none;
+          .alert {
+            transition: translate 1s cubic-bezier(.04,1.15,.55,1.05), opacity 1s cubic-bezier(.04,1.15,.55,1.05);
+            translate: 0 0; opacity: 1;
+            @starting-style { translate: 0 64px; opacity: 0; }
+    
+            box-shadow: 0 0 24px var(--gold-55), 0 0 36px var(--gold-20);
+            backdrop-filter: blur(6px);
+            &.alert-success { color: #1e3a8a; border-color: #1e40af; background: var(--gold-55); }
+            &.alert-danger  { color: #fff; border-color: #842029; background: #ff006e88; text-shadow: 0 0 6px #ff4d9a; }
+            &.alert-info    { color: #fff; border-color: #374456; background: var(--blue-55); text-shadow: 0 0 6px var(--neon-blue); }
+          }
+        }
+      }
+    }
+    
+    main>div.container:has(>div[x-data="ChallengeBoard"]) { /* layout preserved */ }
+    
+    main>.container>div.row.min-vh-25>h3.opacity-50,
+    main>.container>h2.text-center { color: #dbeafe; text-shadow: 0 0 8px var(--neon-blue); }
+    
+    .challenges-row .challenge-button, #challenge-window .nav-item {
+      transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out;
+      border-radius: 6px;
+      background: #00000022;
+      border: 1px solid var(--blue-20);
+      box-shadow: 0 0 6px var(--gold-20);
+    
+      &.challenge-solved {
+        background: color-mix(in srgb, var(--neon-blue) 20%, transparent);
+        border-color: var(--gold-55);
+        box-shadow: 0 0 6px var(--neon-blue), 0 0 18px var(--neon-blue);
+        &:hover {
+          background: color-mix(in srgb, var(--neon-blue) 40%, transparent);
+          border: 1px solid var(--gold-55);
+          box-shadow: 0 0 10px var(--neon-blue), 0 0 24px var(--neon-blue);
+        }
+      }
+      &:hover {
+        background: #ffffff18;
+        border: 1px solid var(--blue-55);
+        box-shadow: 0 0 10px var(--gold-55);
+      }
+    }
+    
+    pre:has(>code) {
+      background: #111827; /* slate-900 */
+      border-radius: 4px;
+      color: #f5f5f4;
+      box-shadow: inset 0 0 10px var(--gold-33);
+    }
+    
+    /* === Modal scroll fixes (kept) === */
+    body:has(>div.modal-backdrop.fade.show) { /* challenge board highlights kept below */ }
+    
+    body.modal-open { overflow: auto !important; padding-right: 0 !important; }
+    #challenge-window { overflow: auto !important; }
+    #challenge-window .modal-dialog { height: auto !important; max-height: auto !important; }
+    #challenge-window .modal-content { max-height: 80vh !important; }
+    #challenge-window .modal-body { overflow: auto !important; }
+    
+    /* === Kategori wrap ke baris baru (tanpa scroll) === */
+    div[x-data="ChallengeBoard"] {
+      width: 100% !important; margin: 0 !important; padding: 8px;
+      overflow: visible !important;
+      border-radius: 12px; background: var(--yum);
+      border: 1px solid var(--blue-20); box-shadow: 0 0 16px var(--gold-20);
+    }
+    div[x-data="ChallengeBoard"] > div[x-show="loaded"] {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px; align-items: start; overflow: visible !important;
+    }
+    div[x-data="ChallengeBoard"] > div[x-show="loaded"] > .pt-5 {
+      display: flex !important; flex-direction: column; gap: 12px; padding: 0 !important; min-width: 0;
+    }
+    div[x-data="ChallengeBoard"] .category-header h3 {
+      text-align: left; margin: 0; margin-bottom: 24px !important;
+      color: var(--neon-blue); text-shadow: 0 0 6px var(--neon-blue);
+    }
+    div[x-data="ChallengeBoard"] .challenges-row {
+      display: flex !important; flex-direction: column; gap: 8px;
+    }
+    div[x-data="ChallengeBoard"] .challenge-button { width: 100%; min-height: 52px; }
+    div[x-data="ChallengeBoard"] .challenge-inner p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    
+    @media (max-width: 600px) {
+      div[x-data="ChallengeBoard"] > div[x-show="loaded"] {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+    
+    @media (width > 1080px) {
+      #challenge-window#challenge-window,
+      #challenge-window#challenge-window .modal-dialog,
+      #challenge-window#challenge-window .modal-content {
+        max-height: none !important; height: none !important;
+      }
+    }
+    
+    #challenge-window {
+      width: 80vh; height: 80vh;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 1060;
+    
+      border-radius: 12px; background: var(--yum);
+      border: 1px solid var(--blue-20);
+      box-shadow: 0 0 16px var(--gold-20), 0 0 28px var(--gold-20);
+      overflow: clip;
+    
+      .modal.fade .modal-dialog, .modal.show .modal-dialog {
+        transition: translate 2s cubic-bezier(0,1,0,1);
+        translate: 0 0; transform: none;
+        @starting-style { translate: 0 -16px; }
+      }
+    
+      .modal-dialog { margin: 0; max-width: unset; height: 100%; }
+      .modal-content {
+        background: none; border: none; overflow: auto; height: 100%;
+        .btn-close {
+          filter: var(--bs-btn-close-white-filter); opacity: 0.9;
+          border: 1px solid var(--blue-12);
+          &:hover { border-color: var(--blue-55); box-shadow: 0 0 12px var(--gold-55); }
+        }
+      }
+    
+      .modal-body { &>div:first-child { display: flex; justify-content: space-between; flex-direction: row-reverse; align-items: center; } }
+    
+      .nav.nav-tabs {
+        gap: 8px; border: none;
+        .nav-link { color: #fff; text-shadow: 0 0 8px var(--neon-blue); }
+        .nav-link, .nav-link.active { border: none; background: none; }
+        .nav-item:has(.active) {
+          background: #ffffff10;
+          border: 1px solid var(--blue-55);
+          box-shadow: 0 0 12px var(--gold-55);
+        }
+      }
+    
+      @media (width > 991px) {
+        &, .modal-dialog, .modal-content { max-height: 80vh; height: fit-content; }
+      }
+      @media (width <= 991px) {
+        width: calc(100vw - 32px);
+        height: calc(100vh - 32px);
+        top: 50%; left: 50%; transform: translate(-50%, -50%);
+      }
+    }
+    
+    /* File badge buttons (blue-ish) */
+    a.btn-file {
+      background: #121316;
+      border-color: var(--gold-33);
+      color: #dbeafe;
+      text-shadow: 0 0 6px var(--neon-blue);
+      box-shadow: 0 0 10px var(--gold-20);
+      &:hover {
+        background: #171a1f;
+        border-color: var(--gold-33);
+        box-shadow: 0 0 16px var(--gold-55);
+      }
+      &:active, &:first-child:active {
+        background: #0f1115; border-color: var(--blue-33);
+      }
+      display: inline-flex !important; flex-direction: column; justify-content: center;
+      i { font-size: 32px; }
+      i::before { content: "\f15b"; }
+      &:is([title$="zip"], [title$="rar"], [title$="gz"], [title$="tar"]) > i::before { content: "\f1c6"; }
+      &:is([title$="png"], [title$="jpg"], [title$="bmp"], [title$="gif"]) > i::before { content: "\f03e"; }
+      &:is([title$="php"], [title$="py"], [title$="js"], [title$=".c"]) > i::before { content: "\f1c9"; }
+      &:is([title$="pdf"]) > i::before { content: "\f1c1"; }
+      &:is([title$="txt"]) > i::before { content: "\f15c"; }
+    }
+    
+    /* 🦊 easter egg (kept, blueified) */
+    body:has(>main>.jumbotron>.container>div>a[href*="lyra.horse"]) {
+      &, main {
+        --primary-font: "Bodoni MT", "Times New Roman", serif;
+        --bs-dark: #0a0a0f;
+        --yum: rgba(17,24,39,.72);
+        --bs-link-color: #3b82f6;
+        --bs-link-hover-color: #60a5fa;
+        background: var(--bs-dark);
+      }
+      a[href*="lyra.horse"] i::before {
+        content: "lyra.horse"; font-family: var(--primary-font);
+        text-decoration: underline; color: #3b82f6; text-shadow: 0 0 8px #3b82f6;
+      }
+      .jumbotron .container {
+        font-family: var(--primary-font);
+        h1 { text-transform: lowercase; font-weight: 400; color: #3b82f6; text-shadow: 0 0 8px #3b82f6; }
+      }
+    }
+    
+    /* ===== Challenge highlight hacks (kept) ===== */
+    body:has(>div.modal-backdrop.fade.show) div[x-data="ChallengeBoard"] {
+      margin: 0;
+      @media (width <= 991px) { transition: none; translate: none; margin: auto; }
+    
+      [x-init^="id = "] { transition: box-shadow 3s; box-shadow: none; }
+    
+      /* blue glow target */
+      &:has([x-init^="id = 0;"]) .challenge-button[value="0"],
+      &:has([x-init^="id = 1;"]) .challenge-button[value="1"],
+      &:has([x-init^="id = 2;"]) .challenge-button[value="2"],
+      &:has([x-init^="id = 3;"]) .challenge-button[value="3"],
+      &:has([x-init^="id = 4;"]) .challenge-button[value="4"],
+      &:has([x-init^="id = 5;"]) .challenge-button[value="5"],
+      &:has([x-init^="id = 6;"]) .challenge-button[value="6"],
+      &:has([x-init^="id = 7;"]) .challenge-button[value="7"],
+      &:has([x-init^="id = 8;"]) .challenge-button[value="8"],
+      &:has([x-init^="id = 9;"]) .challenge-button[value="9"],
+      &:has([x-init^="id = 10;"]) .challenge-button[value="10"],
+      &:has([x-init^="id = 11;"]) .challenge-button[value="11"],
+      &:has([x-init^="id = 12;"]) .challenge-button[value="12"],
+      &:has([x-init^="id = 13;"]) .challenge-button[value="13"],
+      &:has([x-init^="id = 14;"]) .challenge-button[value="14"],
+      &:has([x-init^="id = 15;"]) .challenge-button[value="15"],
+      &:has([x-init^="id = 16;"]) .challenge-button[value="16"],
+      &:has([x-init^="id = 17;"]) .challenge-button[value="17"],
+      &:has([x-init^="id = 18;"]) .challenge-button[value="18"],
+      &:has([x-init^="id = 19;"]) .challenge-button[value="19"],
+      &:has([x-init^="id = 20;"]) .challenge-button[value="20"],
+      &:has([x-init^="id = 21;"]) .challenge-button[value="21"],
+      &:has([x-init^="id = 22;"]) .challenge-button[value="22"],
+      &:has([x-init^="id = 23;"]) .challenge-button[value="23"],
+      &:has([x-init^="id = 24;"]) .challenge-button[value="24"],
+      &:has([x-init^="id = 25;"]) .challenge-button[value="25"],
+      &:has([x-init^="id = 26;"]) .challenge-button[value="26"],
+      &:has([x-init^="id = 27;"]) .challenge-button[value="27"],
+      &:has([x-init^="id = 28;"]) .challenge-button[value="28"],
+      &:has([x-init^="id = 29;"]) .challenge-button[value="29"],
+      &:has([x-init^="id = 30;"]) .challenge-button[value="30"],
+      &:has([x-init^="id = 31;"]) .challenge-button[value="31"],
+      &:has([x-init^="id = 32;"]) .challenge-button[value="32"],
+      &:has([x-init^="id = 33;"]) .challenge-button[value="33"],
+      &:has([x-init^="id = 34;"]) .challenge-button[value="34"],
+      &:has([x-init^="id = 35;"]) .challenge-button[value="35"],
+      &:has([x-init^="id = 36;"]) .challenge-button[value="36"],
+      &:has([x-init^="id = 37;"]) .challenge-button[value="37"],
+      &:has([x-init^="id = 38;"]) .challenge-button[value="38"],
+      &:has([x-init^="id = 39;"]) .challenge-button[value="39"],
+      &:has([x-init^="id = 40;"]) .challenge-button[value="40"],
+      &:has([x-init^="id = 41;"]) .challenge-button[value="41"],
+      &:has([x-init^="id = 42;"]) .challenge-button[value="42"],
+      &:has([x-init^="id = 43;"]) .challenge-button[value="43"],
+      &:has([x-init^="id = 44;"]) .challenge-button[value="44"],
+      &:has([x-init^="id = 45;"]) .challenge-button[value="45"],
+      &:has([x-init^="id = 46;"]) .challenge-button[value="46"],
+      &:has([x-init^="id = 47;"]) .challenge-button[value="47"],
+      &:has([x-init^="id = 48;"]) .challenge-button[value="48"],
+      &:has([x-init^="id = 49;"]) .challenge-button[value="49"],
+      &:has([x-init^="id = 50;"]) .challenge-button[value="50"],
+      &:has([x-init^="id = 51;"]) .challenge-button[value="51"],
+      &:has([x-init^="id = 52;"]) .challenge-button[value="52"],
+      &:has([x-init^="id = 53;"]) .challenge-button[value="53"],
+      &:has([x-init^="id = 54;"]) .challenge-button[value="54"],
+      &:has([x-init^="id = 55;"]) .challenge-button[value="55"],
+      &:has([x-init^="id = 56;"]) .challenge-button[value="56"],
+      &:has([x-init^="id = 57;"]) .challenge-button[value="57"],
+      &:has([x-init^="id = 58;"]) .challenge-button[value="58"],
+      &:has([x-init^="id = 59;"]) .challenge-button[value="59"],
+      &:has([x-init^="id = 60;"]) .challenge-button[value="60"],
+      &:has([x-init^="id = 61;"]) .challenge-button[value="61"],
+      &:has([x-init^="id = 62;"]) .challenge-button[value="62"],
+      &:has([x-init^="id = 63;"]) .challenge-button[value="63"],
+      &:has([x-init^="id = 64;"]) .challenge-button[value="64"],
+      &:has([x-init^="id = 65;"]) .challenge-button[value="65"],
+      &:has([x-init^="id = 66;"]) .challenge-button[value="66"],
+      &:has([x-init^="id = 67;"]) .challenge-button[value="67"],
+      &:has([x-init^="id = 68;"]) .challenge-button[value="68"],
+      &:has([x-init^="id = 69;"]) .challenge-button[value="69"],
+      &:has([x-init^="id = 70;"]) .challenge-button[value="70"],
+      &:has([x-init^="id = 71;"]) .challenge-button[value="71"],
+      &:has([x-init^="id = 72;"]) .challenge-button[value="72"],
+      &:has([x-init^="id = 73;"]) .challenge-button[value="73"],
+      &:has([x-init^="id = 74;"]) .challenge-button[value="74"],
+      &:has([x-init^="id = 75;"]) .challenge-button[value="75"],
+      &:has([x-init^="id = 76;"]) .challenge-button[value="76"],
+      &:has([x-init^="id = 77;"]) .challenge-button[value="77"],
+      &:has([x-init^="id = 78;"]) .challenge-button[value="78"],
+      &:has([x-init^="id = 79;"]) .challenge-button[value="79"],
+      &:has([x-init^="id = 80;"]) .challenge-button[value="80"],
+      &:has([x-init^="id = 81;"]) .challenge-button[value="81"],
+      &:has([x-init^="id = 82;"]) .challenge-button[value="82"],
+      &:has([x-init^="id = 83;"]) .challenge-button[value="83"],
+      &:has([x-init^="id = 84;"]) .challenge-button[value="84"],
+      &:has([x-init^="id = 85;"]) .challenge-button[value="85"],
+      &:has([x-init^="id = 86;"]) .challenge-button[value="86"],
+      &:has([x-init^="id = 87;"]) .challenge-button[value="87"],
+      &:has([x-init^="id = 88;"]) .challenge-button[value="88"],
+      &:has([x-init^="id = 89;"]) .challenge-button[value="89"],
+      &:has([x-init^="id = 90;"]) .challenge-button[value="90"],
+      &:has([x-init^="id = 91;"]) .challenge-button[value="91"],
+      &:has([x-init^="id = 92;"]) .challenge-button[value="92"],
+      &:has([x-init^="id = 93;"]) .challenge-button[value="93"],
+      &:has([x-init^="id = 94;"]) .challenge-button[value="94"],
+      &:has([x-init^="id = 95;"]) .challenge-button[value="95"],
+      &:has([x-init^="id = 96;"]) .challenge-button[value="96"],
+      &:has([x-init^="id = 97;"]) .challenge-button[value="97"],
+      &:has([x-init^="id = 98;"]) .challenge-button[value="98"],
+      &:has([x-init^="id = 99;"]) .challenge-button[value="99"] {
+        background: #ffffff14!important;
+        border: 1px solid var(--blue-55);
+        box-shadow: inset 0 0 256px var(--gold-20), 0 0 16px var(--gold-55);
+        &.challenge-solved {
+          background: color-mix(in srgb, var(--neon-blue) 35%, transparent)!important;
+          border: 1px solid var(--neon-blue);
+        }
+        & .challenge-inner { font-weight: 500; }
+      }
+    
+      /* solved -> button text + submit state */
+      &:has(.challenge-solved[value="0"]) [x-init^="id = 0;"],
+      &:has(.challenge-solved[value="1"]) [x-init^="id = 1;"],
+      &:has(.challenge-solved[value="2"]) [x-init^="id = 2;"],
+      &:has(.challenge-solved[value="3"]) [x-init^="id = 3;"],
+      &:has(.challenge-solved[value="4"]) [x-init^="id = 4;"],
+      &:has(.challenge-solved[value="5"]) [x-init^="id = 5;"],
+      &:has(.challenge-solved[value="6"]) [x-init^="id = 6;"],
+      &:has(.challenge-solved[value="7"]) [x-init^="id = 7;"],
+      &:has(.challenge-solved[value="8"]) [x-init^="id = 8;"],
+      &:has(.challenge-solved[value="9"]) [x-init^="id = 9;"],
+      &:has(.challenge-solved[value="10"]) [x-init^="id = 10;"],
+      &:has(.challenge-solved[value="11"]) [x-init^="id = 11;"],
+      &:has(.challenge-solved[value="12"]) [x-init^="id = 12;"],
+      &:has(.challenge-solved[value="13"]) [x-init^="id = 13;"],
+      &:has(.challenge-solved[value="14"]) [x-init^="id = 14;"],
+      &:has(.challenge-solved[value="15"]) [x-init^="id = 15;"],
+      &:has(.challenge-solved[value="16"]) [x-init^="id = 16;"],
+      &:has(.challenge-solved[value="17"]) [x-init^="id = 17;"],
+      &:has(.challenge-solved[value="18"]) [x-init^="id = 18;"],
+      &:has(.challenge-solved[value="19"]) [x-init^="id = 19;"],
+      &:has(.challenge-solved[value="20"]) [x-init^="id = 20;"],
+      &:has(.challenge-solved[value="21"]) [x-init^="id = 21;"],
+      &:has(.challenge-solved[value="22"]) [x-init^="id = 22;"],
+      &:has(.challenge-solved[value="23"]) [x-init^="id = 23;"],
+      &:has(.challenge-solved[value="24"]) [x-init^="id = 24;"],
+      &:has(.challenge-solved[value="25"]) [x-init^="id = 25;"],
+      &:has(.challenge-solved[value="26"]) [x-init^="id = 26;"],
+      &:has(.challenge-solved[value="27"]) [x-init^="id = 27;"],
+      &:has(.challenge-solved[value="28"]) [x-init^="id = 28;"],
+      &:has(.challenge-solved[value="29"]) [x-init^="id = 29;"],
+      &:has(.challenge-solved[value="30"]) [x-init^="id = 30;"],
+      &:has(.challenge-solved[value="31"]) [x-init^="id = 31;"],
+      &:has(.challenge-solved[value="32"]) [x-init^="id = 32;"],
+      &:has(.challenge-solved[value="33"]) [x-init^="id = 33;"],
+      &:has(.challenge-solved[value="34"]) [x-init^="id = 34;"],
+      &:has(.challenge-solved[value="35"]) [x-init^="id = 35;"],
+      &:has(.challenge-solved[value="36"]) [x-init^="id = 36;"],
+      &:has(.challenge-solved[value="37"]) [x-init^="id = 37;"],
+      &:has(.challenge-solved[value="38"]) [x-init^="id = 38;"],
+      &:has(.challenge-solved[value="39"]) [x-init^="id = 39;"],
+      &:has(.challenge-solved[value="40"]) [x-init^="id = 40;"],
+      &:has(.challenge-solved[value="41"]) [x-init^="id = 41;"],
+      &:has(.challenge-solved[value="42"]) [x-init^="id = 42;"],
+      &:has(.challenge-solved[value="43"]) [x-init^="id = 43;"],
+      &:has(.challenge-solved[value="44"]) [x-init^="id = 44;"],
+      &:has(.challenge-solved[value="45"]) [x-init^="id = 45;"],
+      &:has(.challenge-solved[value="46"]) [x-init^="id = 46;"],
+      &:has(.challenge-solved[value="47"]) [x-init^="id = 47;"],
+      &:has(.challenge-solved[value="48"]) [x-init^="id = 48;"],
+      &:has(.challenge-solved[value="49"]) [x-init^="id = 49;"],
+      &:has(.challenge-solved[value="50"]) [x-init^="id = 50;"],
+      &:has(.challenge-solved[value="51"]) [x-init^="id = 51;"],
+      &:has(.challenge-solved[value="52"]) [x-init^="id = 52;"],
+      &:has(.challenge-solved[value="53"]) [x-init^="id = 53;"],
+      &:has(.challenge-solved[value="54"]) [x-init^="id = 54;"],
+      &:has(.challenge-solved[value="55"]) [x-init^="id = 55;"],
+      &:has(.challenge-solved[value="56"]) [x-init^="id = 56;"],
+      &:has(.challenge-solved[value="57"]) [x-init^="id = 57;"],
+      &:has(.challenge-solved[value="58"]) [x-init^="id = 58;"],
+      &:has(.challenge-solved[value="59"]) [x-init^="id = 59;"],
+      &:has(.challenge-solved[value="60"]) [x-init^="id = 60;"],
+      &:has(.challenge-solved[value="61"]) [x-init^="id = 61;"],
+      &:has(.challenge-solved[value="62"]) [x-init^="id = 62;"],
+      &:has(.challenge-solved[value="63"]) [x-init^="id = 63;"],
+      &:has(.challenge-solved[value="64"]) [x-init^="id = 64;"],
+      &:has(.challenge-solved[value="65"]) [x-init^="id = 65;"],
+      &:has(.challenge-solved[value="66"]) [x-init^="id = 66;"],
+      &:has(.challenge-solved[value="67"]) [x-init^="id = 67;"],
+      &:has(.challenge-solved[value="68"]) [x-init^="id = 68;"],
+      &:has(.challenge-solved[value="69"]) [x-init^="id = 69;"],
+      &:has(.challenge-solved[value="70"]) [x-init^="id = 70;"],
+      &:has(.challenge-solved[value="71"]) [x-init^="id = 71;"],
+      &:has(.challenge-solved[value="72"]) [x-init^="id = 72;"],
+      &:has(.challenge-solved[value="73"]) [x-init^="id = 73;"],
+      &:has(.challenge-solved[value="74"]) [x-init^="id = 74;"],
+      &:has(.challenge-solved[value="75"]) [x-init^="id = 75;"],
+      &:has(.challenge-solved[value="76"]) [x-init^="id = 76;"],
+      &:has(.challenge-solved[value="77"]) [x-init^="id = 77;"],
+      &:has(.challenge-solved[value="78"]) [x-init^="id = 78;"],
+      &:has(.challenge-solved[value="79"]) [x-init^="id = 79;"],
+      &:has(.challenge-solved[value="80"]) [x-init^="id = 80;"],
+      &:has(.challenge-solved[value="81"]) [x-init^="id = 81;"],
+      &:has(.challenge-solved[value="82"]) [x-init^="id = 82;"],
+      &:has(.challenge-solved[value="83"]) [x-init^="id = 83;"],
+      &:has(.challenge-solved[value="84"]) [x-init^="id = 84;"],
+      &:has(.challenge-solved[value="85"]) [x-init^="id = 85;"],
+      &:has(.challenge-solved[value="86"]) [x-init^="id = 86;"],
+      &:has(.challenge-solved[value="87"]) [x-init^="id = 87;"],
+      &:has(.challenge-solved[value="88"]) [x-init^="id = 88;"],
+      &:has(.challenge-solved[value="89"]) [x-init^="id = 89;"],
+      &:has(.challenge-solved[value="90"]) [x-init^="id = 90;"],
+      &:has(.challenge-solved[value="91"]) [x-init^="id = 91;"],
+      &:has(.challenge-solved[value="92"]) [x-init^="id = 92;"],
+      &:has(.challenge-solved[value="93"]) [x-init^="id = 93;"],
+      &:has(.challenge-solved[value="94"]) [x-init^="id = 94;"],
+      &:has(.challenge-solved[value="95"]) [x-init^="id = 95;"],
+      &:has(.challenge-solved[value="96"]) [x-init^="id = 96;"],
+      &:has(.challenge-solved[value="97"]) [x-init^="id = 97;"],
+      &:has(.challenge-solved[value="98"]) [x-init^="id = 98;"],
+      &:has(.challenge-solved[value="99"]) [x-init^="id = 99"] {
+        box-shadow: inset 0 0 256px var(--gold-33), 0 0 16px var(--gold-55);
+        #challenge-submit {
+          font-size: 0px;
+          background: color-mix(in srgb, var(--neon-blue) 60%, transparent);
+          border-color: color-mix(in srgb, var(--neon-blue) 80%, transparent);
+          &:hover { background: var(--neon-blue); color: #0a0a0f; }
+          &::after { font-size: 16px; content: "Solved"; text-shadow: 0 0 8px var(--neon-blue); }
+        }
+      }
+    }
+    
+    div[x-data="ChallengeBoard"] {
+      width: fit-content;
+      border-radius: 12px;
+      background: var(--yum);
+      border: 1px solid var(--blue-20);
+      box-shadow: 0 0 16px var(--gold-20);
+    
+      .category-header {
+        margin: 0!important;
+        h3 {
+          font-size: 16px;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: #d8e6ff;
+          text-shadow: 0 0 6px var(--neon-blue);
+        }
+      }
+    
+      margin: 0 calc(50% - 180px);
+      transition: translate 2s cubic-bezier(0,1,0,1), margin 2s cubic-bezier(0,1,0,1);
+      translate: 0 0;
+      &:not(:has(div[x-show="loaded"]>div)) {
+        opacity: 0.5; translate: 0 -12px; margin: auto;
+      }
+    
+      &>div[x-show="!loaded"] {
+        div.min-vh-50 {
+          min-height: 20vh!important;
+          min-width: 20vh!important;
+          .fa-spin.spinner { color: #fff; opacity: 1; text-shadow: 0 0 8px var(--neon-blue); }
+        }
+      }
+    
+      &>div[x-show="loaded"] {
+        transition: translate 2s cubic-bezier(0,1,0,1);
+        translate: 0 0;
+        @starting-style { translate: 0 -16px; }
+    
+        padding: 32px;
+        >div.pt-5 { padding: 0!important; &:not(:last-child) { margin-bottom: 12px; } }
+    
+        .challenges-row {
+          flex-direction: column; gap: 8px;
+          & > div {
+            margin: 0!important;
+            min-width: fit-content; width: 320px;
+            .challenge-inner {
+              font-weight: 400;
+              transition: font-weight 1s;
+              display: flex; justify-content: space-between; margin: 0!important;
+              p { margin-bottom: 0; }
+              span { scale: 0.85; }
+            }
+          }
+          .challenge-button {
+            box-shadow: none;
+            &::before { content: ""; }
+          }
+        }
+      }
+    }
+    
+    a.btn-file {
+      background: #142441;
+      border-color: var(--blue-33);
+      color: #d8e6ff;
+      text-shadow: 0 0 6px var(--neon-blue);
+      box-shadow: 0 0 10px var(--gold-20);
+      &:hover {
+        background: #19315a;
+        border-color: var(--gold-33);
+        box-shadow: 0 0 16px var(--gold-55);
+      }
+      &:active, &:first-child:active {
+        background: #0f1a33;
+        border-color: var(--blue-33);
+      }
+      display: inline-flex !important;
+      flex-direction: column;
+      justify-content: center;
+      i { font-size: 32px; }
+      i::before { content: "\f15b"; }
+      &:is([title$="zip"], [title$="rar"], [title$="gz"], [title$="tar"]) > i::before { content: "\f1c6"; }
+      &:is([title$="png"], [title$="jpg"], [title$="bmp"], [title$="gif"]) > i::before { content: "\f03e"; }
+      &:is([title$="php"], [title$="py"], [title$="js"], [title$=".c"]) > i::before { content: "\f1c9"; }
+      &:is([title$="pdf"]) > i::before { content: "\f1c1"; }
+      &:is([title$="txt"]) > i::before { content: "\f15c"; }
+    }
+    
+    /* 🦊 easter egg (recolored) */
+    body:has(>main>.jumbotron>.container>div>a[href*="lyra.horse"]) {
+      &, main {
+        --primary-font: "Bodoni MT", "Times New Roman", serif;
+        --bs-dark: #031418;
+        --yum: #062137;
+        --bs-link-color: #59caff;
+        --bs-link-hover-color: #69daff;
+        background: var(--bs-dark);
+      }
+      a[href*="lyra.horse"] i::before { content: "lyra.horse"; font-family: var(--primary-font); text-decoration: underline; color: #00d1ff; text-shadow: 0 0 8px #00d1ff; }
+      .jumbotron .container {
+        font-family: var(--primary-font);
+        h1 {
+          text-transform: lowercase;
+          font-weight: 400;
+          color: #59caff;
+          text-shadow: 0 0 8px #59caff;
+        }
+      }
+    }
+    
+    /* Fix: allow scrolling when the challenge modal is open */
+    body.modal-open {
+      overflow: auto !important;   /* re-enable page scroll */
+      padding-right: 0 !important; /* avoid layout shift */
+    }
+    
+    /* Fix: let the challenge modal itself scroll */
+    #challenge-window {
+      overflow: auto !important;            /* override overflow: clip */
+    }
+    
+    #challenge-window .modal-dialog {
+      height: auto !important;
+      max-height: auto !important;
+    }
+    
+    #challenge-window .modal-content {
+      max-height: 80vh !important;
+    }
+    
+    #challenge-window .modal-body {
+      overflow: auto !important; /* tweak if header/footer differ */
+    }
+    
+    /* Optional: if you prefer only the modal to scroll (background stays fixed),
+       comment out the body.modal-open rule above and use this instead: */
+    /*
+    body.modal-open { overflow: hidden !important; }
+    #challenge-window .modal-content, #challenge-window .modal-body {
+      overflow: auto !important;
+    }
+    */
+    
+    /* Also undo this large-screen constraint you set earlier */
+    
+    /* === Kategori wrap ke baris baru (tanpa scroll) === */
+    div[x-data="ChallengeBoard"] {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 8px;
+      overflow: visible !important; /* biar kontainer nambah tinggi, bukan scroll */
+    }
+    
+    /* Grid: tiap kategori = 1 kolom, kolom akan pindah ke baris baru saat penuh */
+    div[x-data="ChallengeBoard"] > div[x-show="loaded"] {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+      align-items: start;
+      overflow: visible !important;
+    }
+    
+    /* Struktur kolom kategori */
+    div[x-data="ChallengeBoard"] > div[x-show="loaded"] > .pt-5 {
+      display: flex !important;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 !important;
+      min-width: 0; /* cegah overflow judul panjang */
+    }
+    
+    /* Judul kategori */
+    div[x-data="ChallengeBoard"] .category-header h3 {
+      text-align: left;
+      margin: 0;
+      margin-bottom: 24px !important;
+    }
+    
+    /* Daftar challenge tetap vertikal di dalam kolom */
+    div[x-data="ChallengeBoard"] .challenges-row {
+      display: flex !important;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    /* Konsistensi tinggi item supaya baris antar kolom terlihat sejajar */
+    div[x-data="ChallengeBoard"] .challenge-button {
+      width: 100%;
+      min-height: 52px;
+    }
+    div[x-data="ChallengeBoard"] .challenge-inner p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Responsif kecil: kolom lebih rapat */
+    @media (max-width: 600px) {
+      div[x-data="ChallengeBoard"] > div[x-show="loaded"] {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+    
+    @media (width > 1080px) {
+      #challenge-window#challenge-window,
+      #challenge-window#challenge-window .modal-dialog,
+      #challenge-window#challenge-window .modal-content {
+        max-height: none !important;
+        height: none !important;
+      }
+    }
+    
+    #challenge-window {
+      /* size */
+      width: 80vh;
+      height: 80vh;
+    
+      /* center on the entire screen */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    
+      /* layering so it stays above content/backdrop */
+      z-index: 1060;
+    
+      /* visuals */
+      border-radius: 12px;
+      --yum: #0f1115;
+      background: var(--yum);
+      border: 1px solid var(--blue-20);
+      box-shadow: 0 0 16px var(--gold-20), 0 0 28px var(--gold-20);
+    
+      /* prevent bleed */
+      overflow: clip;
+    
+      /* modal animations */
+      .modal.fade .modal-dialog, .modal.show .modal-dialog {
+        transition: translate 2s cubic-bezier(0,1,0,1);
+        translate: 0 0; transform: none;
+        @starting-style { translate: 0 -16px; }
+      }
+    
+      .modal-dialog {
+        margin: 0; max-width: unset; height: 100%;
+      }
+    
+      .modal-content {
+        background: none; border: none; overflow: auto; height: 100%;
+        .btn-close {
+          filter: var(--bs-btn-close-white-filter);
+          opacity: 0.9;
+          border: 1px solid var(--blue-12);
+          &:hover { border-color: var(--blue-55); box-shadow: 0 0 12px var(--gold-55); }
+        }
+      }
+    
+      .modal-body {
+        &>div:first-child {
+          display: flex; justify-content: space-between; flex-direction: row-reverse; align-items: center;
+        }
+      }
+    
+      .nav.nav-tabs {
+        gap: 8px; border: none;
+        .nav-link { color: #fff; text-shadow: 0 0 8px var(--neon-blue); }
+        .nav-link, .nav-link.active { border: none; background: none; }
+        .nav-item:has(.active) {
+          background: #ffffff10;
+          border: 1px solid var(--blue-55);
+          box-shadow: 0 0 12px var(--gold-55);
+        }
+      }
+    
+      @media (width > 991px) {
+        &, .modal-dialog, .modal-content { max-height: 80vh; height: fit-content; }
+      }
+    
+      @media (width <= 991px) {
+        /* keep it centered with a safe margin on small screens */
+        width: calc(100vw - 32px);
+        height: calc(100vh - 32px);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    
+    /* Keep submission alerts INSIDE the challenge box (no floating, no page scroll) */
+    #challenge > .notification-row{
+      position: static !important;   /* override the fixed placement */
+      width: 100% !important;
+      margin: 0 0 12px 0 !important;
+      padding: 0 !important;
+    }
+    
+    #challenge > .notification-row .alert{
+      position: relative;
+      margin: 0 0 8px 0;
+      border-radius: 10px;
+      translate: 0 0 !important;     /* cancel the animated translate */
+      opacity: 1 !important;
+      box-shadow: 0 0 24px var(--gold-20), 0 0 36px var(--gold-20);
+      white-space: normal;            /* wrap long lines */
+      overflow-wrap: anywhere;
+    }
+    
+    /* Let the modal "box" be taller so alerts don't force scrollbars */
+    #challenge-window,
+    #challenge-window .modal-dialog,
+    #challenge-window .modal-content{
+      height: auto !important;
+      max-height: 92vh !important;    /* was 80vh; give more headroom */
+      overflow: visible !important;   /* allow content to grow the box */
+    }
+    
+    /* Small screens: keep safety scroll INSIDE the modal body only if really needed */
+    @media (max-width: 991px){
+      #challenge-window,
+      #challenge-window .modal-dialog,
+      #challenge-window .modal-content{
+        max-height: 96vh !important;
+      }
+      #challenge-window .modal-body{
+        overflow: auto !important;    /* only the body scrolls on tiny viewports */
+      }
+    }
+    
+    /* Optional: if the alerts live inside .modal-body, keep them at the top area */
+    #challenge-window .modal-body > .notification-row{
+      margin-bottom: 12px;
+    }
+    
+    /* ==== Fix: banyak Solves bikin modal nyangkut ==== */
+    
+    /* Biarkan nav tabs selalu tampak (lengket di atas konten) */
+    #challenge-window .nav.nav-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--yum);
+      padding-top: 4px;
+    }
+    
+    /* Hanya konten tab yang di-scroll, bukan seluruh modal */
+    #challenge-window .tab-content {
+      /* sisakan ruang untuk header/title + tabs */
+      max-height: calc(92vh - 160px);
+      overflow: auto;
+    }
+    
+    /* Spesifik untuk pane "Solves" */
+    #challenge-window .tab-pane#solves {
+      overflow: auto;
+    }
+    
+    /* Kalau CTFd kamu pakai table langsung tanpa .table-responsive,
+       paksa tabelnya rapih dan tidak memaksa lebar */
+    #challenge-window .tab-pane#solves table {
+      width: 100%;
+      table-layout: fixed;              /* kolom tidak melar */
+      border-collapse: collapse;
+    }
+    
+    /* Potong teks panjang (username/time) biar tidak overflow */
+    #challenge-window .tab-pane#solves th,
+    #challenge-window .tab-pane#solves td {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Pada layar kecil, izinkan wrap supaya tetap terbaca */
+    @media (max-width: 576px) {
+      #challenge-window .tab-pane#solves th,
+      #challenge-window .tab-pane#solves td {
+        white-space: normal;
+        word-break: break-word;
+        text-overflow: clip;
+      }
+    }
+    
+    /* Opsional: kalau ada .table-responsive, batasi tinggi kontainer itu saja */
+    #challenge-window .tab-pane#solves .table-responsive {
+      max-height: calc(92vh - 160px);
+      overflow: auto;
+    }
+      </style>
+      
+<div id="wreckit-landing" class="tw-bg-transparent">
+  <canvas id="matrixCanvas"></canvas>
+
+  <div class="content-root">
+
+    <!-- HERO -->
+    <header class="tw-container tw-mx-auto tw-px-6 tw-pt-20 tw-pb-10 tw-text-center">
+      <a href="https://ibb.co.com/Kp04C1Rg"><img src="https://i.ibb.co.com/Q3bSs5zV/phx.png" alt="phx" border="0" class="tw-mx-auto tw-w-[220px] md:tw-w-[320px] tw-drop-shadow-lg tw-animate-popUp"></a>
+      <h1 class="tw-text-3xl md:tw-text-5xl tw-font-extrabold tw-tracking-wide tw-text-gold tw-mt-6 tw-drop-shadow">
+        “Perisai: A Collaborative & Innovative Approach to Cyber Resilience in the Age of Blockchain”
+      </h1>
+      <div class="tw-mt-8 tw-flex tw-flex-wrap tw-gap-4 tw-justify-center">
+        <a href="/register" class="tw-inline-block tw-px-8 tw-py-3 tw-rounded-full tw-font-bold tw-text-black tw-bg-gradient-to-r tw-from-yellow-600 tw-to-amber-600 hover:tw-from-yellow-500 hover:tw-to-amber-500 tw-shadow-glow tw-transform hover:tw-scale-105">Register</a>
+        <a href="/challenges" class="tw-inline-block tw-px-8 tw-py-3 tw-rounded-full tw-font-bold tw-text-gold tw-border tw-border-yellow-400 tw-bg-gradient-to-r tw-from-zinc-900 tw-to-zinc-950 hover:tw-scale-105">Enter CTF</a>
+        <a href="https://wreckit.id/petunjuk.pdf" target="_blank" class="tw-inline-block tw-px-8 tw-py-3 tw-rounded-full tw-font-bold tw-text-gold tw-border tw-border-yellow-400 tw-bg-gradient-to-r tw-from-zinc-900 tw-to-zinc-950 hover:tw-scale-105">Guidebook</a>
+      </div>
+      <div class="tw-mt-6 tw-space-x-4 tw-text-gold">
+        <a href="https://www.instagram.com/wreckit.id" target="_blank"><i class="fab fa-instagram tw-text-2xl"></i></a>
+        <a href="https://id.linkedin.com/company/wreck-it" target="_blank"><i class="fab fa-linkedin tw-text-2xl"></i></a>
+        <a href="https://github.com/ctfd" target="_blank"><i class="fab fa-github tw-text-2xl"></i></a>
+      </div>
+    </header>
+
+    <!-- Schedule chips -->
+    <div id="wri-schedule"
+        class="tw-mt-6 tw-flex tw-flex-wrap tw-justify-center tw-gap-3"
+        data-start="2025-10-04T02:00:00Z"
+        data-end="2025-10-04T12:00:00Z">
+      <span class="wri-chip"><i class="fa-solid fa-play tw-mr-2"></i><b>Start:</b>&nbsp;<time id="wri-start">—</time></span>
+      <span class="wri-chip"><i class="fa-solid fa-flag-checkered tw-mr-2"></i><b>End:</b>&nbsp;<time id="wri-end">—</time></span>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="tw-container tw-mx-auto tw-px-6 tw-py-12">
+      <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-text-gold tw-mb-10">About The Competition</h2>
+      <div class="tw-grid md:tw-grid-cols-2 tw-gap-8">
+        <div class="wri-card tw-p-6 tw-text-zinc-200">
+          <p>WRECK-IT 6.0 merupakan annual event di bidang keamanan siber yang diselenggarakan oleh Senat Korps Taruna Politeknik Siber dan Sandi Negara. Pada 2025, WRECK-IT hadir dengan tema <span class="tw-font-semibold">Perisai: Proactive, Enduring Resilience through Innovative Security and Adaptability in the Blockchain Era.</span></p>
+          <p class="tw-mt-4">Eksploitasi web melibatkan pengujian terhadap aplikasi web untuk mencari dan mengeksploitasi celah keamanan, seperti XSS (Cross-Site Scripting) and SQL Injection (SQLi)</p>
+          <ul class="tw-mt-5 tw-space-y-2">
+            <li class="tw-flex tw-items-center tw-gap-3"><i class="fas fa-calendar-day"></i><span>5 Aug – 22 Oct 2025</span></li>
+            <li class="tw-flex tw-items-center tw-gap-3"><i class="fas fa-clock"></i><span>24-hour competition</span></li>
+            <li class="tw-flex tw-items-center tw-gap-3"><i class="fas fa-users"></i><span>Tim 1–3 orang</span></li>
+          </ul>
+        </div>
+        <div class="wri-card tw-p-2">
+          <img src="https://wreckit.id/img/about.png" alt="About" class="tw-w-full tw-rounded-xl tw-shadow-glow">
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="tw-container tw-mx-auto tw-px-6 tw-py-12">
+      <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-text-gold tw-mb-10">Challenge Category</h2>
+      <div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+        <!-- Card template -->
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-900 tw-text-blue-400 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-globe"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Web Exploitation</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Cari dan eksploitasi celah seperti XSS & SQLi.</p>
+        </div>
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-800 tw-text-blue-300 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-lock"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Cryptography</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Dalam tantangan kriptografi, peserta diminta untuk memecahkan pesan yang terenkripsi atau mencari kelemahan dalam algoritma enkripsi yang digunakan</p>
+        </div>
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-700 tw-text-blue-200 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-bolt"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Binary Exploitation & Pwn</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Kategori Pwn dan Binary Exploitation dalam CTF bertujuan untuk mengeksploitasi celah keamanan pada aplikasi atau sistem guna memperoleh akses penuh dengan menggunakan teknik seperti buffer overflow, format string, atau manipulasi memori.</p>
+        </div>
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-600 tw-text-blue-100 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-search"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Forensics</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Tantangan forensik berfokus pada analisis artefak digital, seperti file, log, atau data yang dikumpulkan dari perangkat atau aplikasi</p>
+        </div>
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-500 tw-text-blue-50 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-code"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Reverse Engineering</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Reverse engineering melibatkan proses mendekonstruksi dan menganalisis perangkat lunak atau program untuk memahami fungsionalitas internalnya</p>
+        </div>
+        <div class="wri-card tw-p-6">
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <div class="tw-w-14 tw-h-14 tw-rounded-full tw-bg-blue-400 tw-text-blue-900 tw-text-2xl tw-flex tw-items-center tw-justify-center"><i class="fas fa-box"></i></div>
+            <h3 class="tw-text-2xl tw-font-semibold">Blockchain</h3>
+          </div>
+          <p class="tw-text-zinc-200 tw-mt-3">Kategori Blockchain dalam CTF berfokus pada pemahaman dan eksploitasi kerentanannya dalam teknologi blockchain, termasuk serangan terhadap kontrak pintar, kriptografi, atau mekanisme konsensus untuk mendapatkan keuntungan atau akses tidak sah.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+
+  // Matrix background effect (blue digits)
+  (function(){
+    const c = document.getElementById('matrixCanvas'); if(!c) return;
+    const ctx = c.getContext('2d'); const fontSize = 18; let cols, drops;
+    function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; cols = Math.floor(c.width/fontSize); drops = Array.from({length: cols}, ()=>1); }
+    function tick(){
+      ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,c.width,c.height);
+      ctx.fillStyle = '#3b82f6'; ctx.font = `${fontSize}px monospace`;
+      for(let i=0;i<drops.length;i++){
+        const ch = Math.random() < .5 ? '0' : '1';
+        ctx.fillText(ch, i*fontSize, drops[i]*fontSize);
+        if(drops[i]*fontSize > c.height && Math.random() > .975) drops[i]=0;
+        drops[i]++;
+      }
+      requestAnimationFrame(tick);
+    }
+    resize(); window.addEventListener('resize', resize); tick();
+  })();
+
+  // Timeline reveal
+  (function(){
+    const items = document.querySelectorAll('#wreckit-landing .timeline-item');
+    if(!items.length) return;
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+    }, {threshold:.5});
+    items.forEach(i=>io.observe(i));
+  })();
+
+  // FAQ accordion
+  (function(){
+    document.querySelectorAll('#wreckit-landing .faq-q').forEach(q=>{
+      q.addEventListener('click', ()=>{
+        q.classList.toggle('active');
+        const a = q.nextElementSibling;
+        a.classList.toggle('open');
+      });
+    });
+  })();
+
+
+</script>
+<script>
+(function(){
+  const root = document.getElementById('wri-schedule');
+  if(!root) return;
+
+  const startRaw = root.getAttribute('data-start') || '';
+  const endRaw   = root.getAttribute('data-end')   || '';
+  const elStart  = document.getElementById('wri-start');
+  const elEnd    = document.getElementById('wri-end');
+
+  function parseISOish(s){
+    if(!s) return NaN;
+    const t = s.trim();
+
+    // numeric epoch support
+    if(/^\d+$/.test(t)){
+      const n = Number(t);
+      return n > 1e12 ? n : n*1000;
+    }
+    // "YYYY-MM-DD HH:MM:SS" -> ISO
+    let iso = t.replace(' ', 'T');
+    // if looks like '...T12:34:56' with no TZ, assume UTC and add Z
+    if (/T\d{2}:\d{2}:\d{2}$/.test(iso)) iso += 'Z';
+
+    const ms = Date.parse(iso);
+    return isNaN(ms) ? NaN : ms;
+  }
+
+  function formatWIB(ms){
+    if(isNaN(ms)) return 'unknown';
+    const opts = {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false, timeZone: 'Asia/Jakarta', timeZoneName: 'short'
+    };
+    let txt = new Intl.DateTimeFormat('id-ID', opts).format(new Date(ms));
+    // Ensure label shows WIB (fallback if some browsers give GMT+7)
+    if(!/WIB/i.test(txt)) txt += ' WIB';
+    return txt.replace(',', '');
+  }
+
+  elStart && (elStart.textContent = formatWIB(parseISOish(startRaw)));
+  elEnd   && (elEnd.textContent   = formatWIB(parseISOish(endRaw)));
+})();
+</script>
+
+  </div>
+
+</main>
+
+
+
+<footer class="footer">
+  <div class="container text-center">
+    <a href="https://ctfd.io" class="text-secondary">
+      <small class="text-muted">
+        Powered by CTFd
+      </small>
+    </a>
+  </div>
+</footer>
+
+<div x-data>
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+      <div class="toast-header">
+        <strong class="me-auto" x-text="$store.toast.title"></strong>
+        <small>just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" x-html="$store.toast.html">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data>
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script type="module"  src="/themes/core/static/assets/index.b6be5691.js"></script><script type="module"  src="/themes/core/static/assets/page.1b85bc2f.js"></script>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

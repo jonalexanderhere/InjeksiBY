@@ -1,0 +1,28 @@
+PHXCTF Crypto Challenge - Hints
+
+=== HINT 1: Base64 is the main encoding ===
+The data is Base64 encoded. Use a Base64 decoder to get the first result.
+
+=== HINT 2: Character substitution ===
+After Base64 decoding, you'll get: SHXCTF{K0ol_B4se64_Pols}
+Notice that it starts with 'S' instead of 'P'.
+
+=== HINT 3: The substitution rule ===
+Replace 'S' with 'P' to get the correct flag format.
+S → P
+
+=== HINT 4: Final flag ===
+After the substitution, you'll get: PHXCTF{K0ol_B4se64_Pols}
+
+=== HINT 5: Tools to use ===
+- Online Base64 decoder
+- Python: base64.b64decode()
+- Command line: base64 -d
+
+=== HINT 6: Step by step ===
+1. Take the encrypted data: U0hYQ1RGe0swb2xfQjRzZTY0X1BvbHN9
+2. Decode with Base64: SHXCTF{K0ol_B4se64_Pols}
+3. Replace S with P: PHXCTF{K0ol_B4se64_Pols}
+4. Submit the flag!
+
+Good luck, crypto master!

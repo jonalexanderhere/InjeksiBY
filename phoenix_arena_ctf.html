@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Arena CTF</title>
+    <link rel="shortcut icon" href="https://i.ibb.co.com/Q3bSs5zV/phx.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'phoenix-blue': '#3b82f6',
+                        'phoenix-blue-light': '#60a5fa',
+                        'phoenix-blue-dark': '#2563eb',
+                        'phoenix-onyx': '#0a0a0f',
+                        'phoenix-coal': '#0d0f14',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { 
+                                textShadow: '0 0 20px #3b82f6, 0 0 40px #3b82f6',
+                                filter: 'drop-shadow(0 0 20px #3b82f6)'
+                            },
+                            '100%': { 
+                                textShadow: '0 0 30px #3b82f6, 0 0 60px #3b82f6',
+                                filter: 'drop-shadow(0 0 30px #3b82f6)'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)', opacity: '0.6' },
+                            '50%': { transform: 'translateY(-20px) rotate(180deg)', opacity: '1' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-glow {
+            text-shadow: 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+        }
+        .text-glow-soft {
+            text-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+        }
+        .box-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+        .box-glow-strong {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.3);
+        }
+        .bg-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-inter bg-phoenix-onyx text-white min-h-screen overflow-x-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="fixed inset-0 z-0">
+        <div 
+            class="w-full h-full bg-cover bg-center bg-no-repeat"
+            style="background-image: url('https://i.ibb.co/Q3CjhGyN/Whats-App-Image-2025-10-04-at-08-58-20-e265ae0e.jpg');"
+        ></div>
+        <div class="absolute inset-0 bg-phoenix-onyx/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-phoenix-onyx/90 via-phoenix-coal/80 to-phoenix-onyx/90"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="fixed inset-0 z-10 pointer-events-none">
+        <div id="particles" class="w-full h-full relative"></div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <main class="relative z-20 flex items-center justify-center min-h-screen">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Logo -->
+            <div class="mb-8 animate-fade-in">
+                <img src="https://i.ibb.co.com/Q3bSs5zV/phx.png" alt="Phoenix Arena CTF Logo" class="h-24 w-24 md:h-32 md:w-32 mx-auto rounded-full border-4 border-phoenix-blue box-glow-strong animate-float">
+            </div>
+            
+            <!-- Main Title -->
+            <h1 class="text-6xl md:text-8xl font-black text-phoenix-blue animate-glow mb-6 tracking-tight">
+                PHOENIX ARENA
+            </h1>
+            
+            <!-- Subtitle -->
+            <h2 class="text-xl md:text-2xl text-white/90 italic max-w-4xl mx-auto mb-12 leading-relaxed animate-fade-in">
+                "Perisai: A Collaborative & Innovative Approach to Cyber Resilience in the Age of Blockchain"
+            </h2>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-slide-up">
+                <a href="/register" class="w-full sm:w-auto px-8 py-4 bg-phoenix-blue text-white font-bold text-lg rounded-xl hover:bg-phoenix-blue-light transform hover:scale-105 transition-all duration-300 box-glow-strong">
+                    REGISTER
+                </a>
+                <a href="/challenges" class="w-full sm:w-auto px-8 py-4 bg-transparent text-phoenix-blue border-2 border-phoenix-blue font-bold text-lg rounded-xl hover:bg-phoenix-blue hover:text-white transform hover:scale-105 transition-all duration-300 box-glow">
+                    ENTER CTF
+                </a>
+                <a href="/guidebook" class="w-full sm:w-auto px-8 py-4 bg-transparent text-phoenix-blue border-2 border-phoenix-blue font-bold text-lg rounded-xl hover:bg-phoenix-blue hover:text-white transform hover:scale-105 transition-all duration-300 box-glow">
+                    GUIDEBOOK
+                </a>
+            </div>
+            
+            <!-- Competition Info -->
+            <div class="text-white/80 text-lg animate-fade-in">
+                <p><span class="font-semibold">Start:</span> — <span class="font-semibold">End:</span> —</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section class="relative z-20 py-20 bg-phoenix-coal/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-phoenix-blue text-glow-soft mb-8">
+                    About The Competition
+                </h2>
+                <p class="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
+                    Phoenix Arena CTF merupakan annual event di bidang keamanan siber yang diselenggarakan oleh Senat Korps Taruna Politeknik Siber dan Sandi Negara. Pada 2025, Phoenix Arena CTF hadir dengan tema Perisai: Proactive, Enduring Resilience through Innovative Security and Adaptability in the Blockchain Era.
+                </p>
+                <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+                    Eksploitasi web melibatkan pengujian terhadap aplikasi web untuk mencari dan mengeksploitasi celah keamanan, seperti XSS (Cross-Site Scripting) and SQL Injection (SQLi)
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-phoenix-onyx/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 box-glow">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-phoenix-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-phoenix-blue mb-2">5 Aug – 22 Oct 2025</h3>
+                        <p class="text-white/80">Competition Period</p>
+                    </div>
+                </div>
+
+                <div class="bg-phoenix-onyx/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 box-glow">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-phoenix-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-phoenix-blue mb-2">24-hour competition</h3>
+                        <p class="text-white/80">Continuous Challenge</p>
+                    </div>
+                </div>
+
+                <div class="bg-phoenix-onyx/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 box-glow">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-phoenix-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-phoenix-blue mb-2">Tim 1–3 orang</h3>
+                        <p class="text-white/80">Team Formation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Categories Section -->
+    <section class="relative z-20 py-20 bg-phoenix-onyx/30 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-phoenix-blue text-glow-soft mb-8">
+                    Challenge Category
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Web Exploitation -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Web Exploitation</h3>
+                    <p class="text-white/80 leading-relaxed">Cari dan eksploitasi celah seperti XSS & SQLi.</p>
+                </div>
+
+                <!-- Cryptography -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Cryptography</h3>
+                    <p class="text-white/80 leading-relaxed">Dalam tantangan kriptografi, peserta diminta untuk memecahkan pesan yang terenkripsi atau mencari kelemahan dalam algoritma enkripsi yang digunakan</p>
+                </div>
+
+                <!-- Binary Exploitation -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Binary Exploitation & Pwn</h3>
+                    <p class="text-white/80 leading-relaxed">Kategori Pwn dan Binary Exploitation dalam CTF bertujuan untuk mengeksploitasi celah keamanan pada aplikasi atau sistem guna memperoleh akses penuh dengan menggunakan teknik seperti buffer overflow, format string, atau manipulasi memori.</p>
+                </div>
+
+                <!-- Forensics -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Forensics</h3>
+                    <p class="text-white/80 leading-relaxed">Tantangan forensik berfokus pada analisis artefak digital, seperti file, log, atau data yang dikumpulkan dari perangkat atau aplikasi</p>
+                </div>
+
+                <!-- Reverse Engineering -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Reverse Engineering</h3>
+                    <p class="text-white/80 leading-relaxed">Reverse engineering melibatkan proses mendekonstruksi dan menganalisis perangkat lunak atau program untuk memahami fungsionalitas internalnya</p>
+                </div>
+
+                <!-- Blockchain -->
+                <div class="bg-phoenix-coal/60 backdrop-blur-sm rounded-2xl p-8 border border-phoenix-blue/20 hover:border-phoenix-blue/40 transition-all duration-300 hover:transform hover:scale-105 box-glow">
+                    <div class="w-12 h-12 bg-phoenix-blue/20 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-phoenix-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-phoenix-blue mb-4">Blockchain</h3>
+                    <p class="text-white/80 leading-relaxed">Kategori Blockchain dalam CTF berfokus pada pemahaman dan eksploitasi kerentanannya dalam teknologi blockchain, termasuk serangan terhadap kontrak pintar, kriptografi, atau mekanisme konsensus untuk mendapatkan keuntungan atau akses tidak sah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-20 py-12 bg-phoenix-coal/80 backdrop-blur-sm border-t border-phoenix-blue/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold text-phoenix-blue mb-4">Quick Links</h3>
+                    <div class="space-y-2">
+                        <a href="/dashboard" class="block text-white/80 hover:text-phoenix-blue transition-colors duration-300">Dashboard</a>
+                        <a href="/scoreboard" class="block text-white/80 hover:text-phoenix-blue transition-colors duration-300">Scoreboard</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold text-phoenix-blue mb-4">Contact Person</h3>
+                    <div class="space-y-2">
+                        <p class="text-white/80">Adan: +62 852-6645-4411</p>
+                        <p class="text-white/80">Yola: +62 852-6053-2293</p>
+                    </div>
+                </div>
+
+                <!-- Follow Us -->
+                <div>
+                    <h3 class="text-lg font-bold text-phoenix-blue mb-4">Follow Us</h3>
+                    <div class="space-y-2">
+                        <p class="text-white/80">Powered by CTFd</p>
+                        <p class="text-white/80">Phoenix Arena CTF 2025</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-phoenix-blue/20 mt-8 pt-8 text-center">
+                <p class="text-white/60">
+                    Powered by <a href="https://ctfd.io" class="text-phoenix-blue hover:text-phoenix-blue-light transition-colors duration-300">CTFd</a> • 
+                    Phoenix Arena CTF Theme by jono alexander
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute w-1 h-1 bg-phoenix-blue rounded-full animate-float opacity-60';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
